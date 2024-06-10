@@ -1,37 +1,44 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Health</title>
     <link rel="stylesheet" href="health.css">
 </head>
+
 <body>
     <div class="container">
         <form id="inputForm">
-            <label for="input1">Wert 1:</label>
+            <label for="input1">skurczowe cisnienie:</label>
             <input type="number" id="input1" required><br>
-            <label for="input2">Wert 2:</label>
+            <label for="input2">rozkurczowe cisnienie:</label>
             <input type="number" id="input2" required><br>
-            <label for="input3">Wert 3:</label>
+            <label for="input3">puls</label>
             <input type="number" id="input3" required><br>
-            <button type="button" id="submitButton" onclick="addRow()" disabled>Absenden</button>
+            <label for="input4">waga</label>
+            <input type="number" id="input4" required><br>
+            <button type="button" id="submitButton" disabled>Absenden</button>
         </form>
 
         <table id="resultTable">
             <thead>
                 <tr>
-                    <th>Wert 1</th>
-                    <th>Wert 2</th>
-                    <th>Wert 3</th>
+                    <th>skurczowe (mmHg)</th>
+                    <th>rozkurczowe (mmHg)</th>
+                    <th>puls (bpm)</th>
+                    <th>waga (kg)</th>
                     <th>Datum und Uhrzeit</th>
                 </tr>
             </thead>
             <tbody>
-          
+                <!-- Neue Reihen werden hier hinzugefügt -->
             </tbody>
         </table>
     </div>
-    <script src="health.js"></script>
+    <script type="module" src="firebase.js"></script>
+    <script type="module" src="health.js"></script>
 </body>
+
 </html>
