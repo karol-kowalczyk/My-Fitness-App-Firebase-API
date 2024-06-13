@@ -1,44 +1,40 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Health</title>
-    <link rel="stylesheet" href="health.css">
+
+    <link rel="stylesheet" href="style.css">
+    <script defer src="health.js"></script>
 </head>
 
-<body>
-    <div class="container">
-        <form id="inputForm">
-            <label for="input1">skurczowe cisnienie:</label>
-            <input type="number" id="input1" required><br>
-            <label for="input2">rozkurczowe cisnienie:</label>
-            <input type="number" id="input2" required><br>
-            <label for="input3">puls</label>
-            <input type="number" id="input3" required><br>
-            <label for="input4">waga</label>
-            <input type="number" id="input4" required><br>
-            <button type="button" id="submitButton" disabled>Absenden</button>
-        </form>
+<body onload="init()">
+    <h1>Daily morning health</h1>
 
-        <table id="resultTable">
-            <thead>
-                <tr>
-                    <th>skurczowe (mmHg)</th>
-                    <th>rozkurczowe (mmHg)</th>
-                    <th>puls (bpm)</th>
-                    <th>waga (kg)</th>
-                    <th>Datum und Uhrzeit</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Neue Reihen werden hier hinzugefügt -->
-            </tbody>
-        </table>
+    <div class="input-fields">
+        <div class="numbers-input-field">
+            <h3>Systolic Pressure</h3>
+            <input required type="number" id="systolic">
+        </div>
+        <div class="numbers-input-field">
+            <h3>Diastolic Pressure</h3>
+            <input required type="number" id="diastolic">
+        </div>
+        <div class="numbers-input-field">
+            <h3>Pulse</h3>
+            <input required type="number" id="pulse">
+        </div>
+        <div class="numbers-input-field">
+            <h3>Weight</h3>
+            <input required type="number" id="weight">
+        </div>
+        <button onclick="submitHealthData()" type="button" id="btn" class="btn">Submit</button>
     </div>
-    <script type="module" src="firebase.js"></script>
-    <script type="module" src="health.js"></script>
+
+    <a class="months" href="./months.html">Months</a>
+
 </body>
 
 </html>
