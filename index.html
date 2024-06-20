@@ -6,34 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Głowna strona</title>
 
+    <link rel="stylesheet" href="style.css">
     <script defer src="script.js"></script>
 </head>
 
 <body onload="init()">
     <h1>Wyniki zdrowotne</h1>
-    <div>aktualna data:</div>
-    <div id="actualDate"></div>
-    <div>
-        <div>
-            <div>
-                <div>skurczowe cisnienie:</div> <input type="text">
+    <div class="actual-date-div">
+        <div>aktualna data:</div>
+        <div id="actualDate"></div>
+    </div>
+    <form>
+        <div class="body-measurements">
+            <div class="measurement-row">
+                <div>skurczowe cis.:</div> <input required type="number" type="text">
                 <div>mmHg</div>
             </div>
-            <div>
-                <div>roskurczowe cisnienie:</div> <input type="text">
+            <div class="measurement-row">
+                <div>roskurczowe cis.:</div> <input required type="number" type="text">
                 <div>mmHg</div>
             </div>
-            <div>
-                <div>puls:</div> <input type="text">
+            <div class="measurement-row">
+                <div>puls:</div> <input required type="number" type="text">
                 <div>bpm</div>
             </div>
-            <div>
-                <div>waga:</div> <input type="text">
+            <div class="measurement-row">
+                <div>waga:</div> <input required type="number" type="text">
                 <div>kg</div>
             </div>
         </div>
-    </div>
-    <button>Submit</button>
+        <button>Submit</button>
+    </form>
 </body>
 
 </html>
