@@ -18,7 +18,7 @@ button {
     cursor: pointer;
 }
 
-.body-measurements {}
+/* .body-measurements {} */
 
 .measurement-row {
     display: flex;
@@ -32,4 +32,17 @@ button {
     display: flex;
     margin-top: 8px;
     margin-bottom: 8px;
+}
+
+#summarySection {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.health-stats-goal {
+    display: flex;
+    justify-content: flex-end;
+    gap: 6px;
+    margin: 8px 0;
 }

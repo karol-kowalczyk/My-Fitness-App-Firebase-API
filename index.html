@@ -19,24 +19,73 @@
     <form>
         <div class="body-measurements">
             <div class="measurement-row">
-                <div>skurczowe cis.:</div> <input required type="number" type="text">
+                <div>skurczowe ciś.:</div> <input required type="number">
                 <div>mmHg</div>
             </div>
             <div class="measurement-row">
-                <div>roskurczowe cis.:</div> <input required type="number" type="text">
+                <div>rozkurczowe ciś.:</div> <input required type="number">
                 <div>mmHg</div>
             </div>
             <div class="measurement-row">
-                <div>puls:</div> <input required type="number" type="text">
+                <div>puls:</div> <input required type="number">
                 <div>bpm</div>
             </div>
             <div class="measurement-row">
-                <div>waga:</div> <input required type="number" type="text">
+                <div>waga:</div> <input required type="number">
                 <div>kg</div>
             </div>
         </div>
         <button>Submit</button>
     </form>
+
+    <div id="summarySection">
+        <div id="lastThirtyDays">
+            <h4>Ø ostatnich 30-dni:</h4>
+            <div class="body-measurements">
+                <div class="measurement-row">
+                    <div>skurczowe ciś.:</div>
+                    <div id="averageSystolic"></div>
+                </div>
+                <div class="measurement-row">
+                    <div>rozkurczowe ciś.:</div>
+                    <div id="averageDiastolic"></div>
+                </div>
+                <div class="measurement-row">
+                    <div>puls:</div>
+                    <div id="averagePulse"></div>
+                </div>
+                <div class="measurement-row">
+                    <div>waga:</div>
+                    <div id="averageWeight"></div>
+                </div>
+            </div>
+        </div>
+        <div id="goal">
+            <h4>Cel Ø ostatnich 30-dni:</h4>
+            <div>
+                <div class="health-stats-goal">
+                    <div>120</div>
+                    <div>mmHg</div>
+                </div>
+                <div class="health-stats-goal">
+                    <div>80</div>
+                    <div>mmHg</div>
+                </div>
+                <div class="health-stats-goal">
+                    <div>60</div>
+                    <div>bpm</div>
+                </div>
+                <div class="health-stats-goal">
+                    <div>90</div>
+                    <div>kg</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div>Tabela aktualnego miesiaca: <div id="actualMonth"></div></div>
+    </div>
 </body>
 
 </html>
