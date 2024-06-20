@@ -1,6 +1,6 @@
 function init() {
     showDate();
-    showActualmonth();
+    showActualMonth();
 }
 
 function showDate() {
