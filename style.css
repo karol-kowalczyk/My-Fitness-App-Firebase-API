@@ -21,8 +21,6 @@
         cursor: pointer;
     }
 
-    /* .body-measurements {} */
-
     .measurement-row {
         display: flex;
         gap: 16px;
@@ -56,13 +54,19 @@
         gap: 8px;
     }
 
-    #table {
-        display: flex;
-        justify-content: space-between;
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 16px;
+    }
+
+    th,td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: center;
     }
 
     #actualMonthStats {
         width: 100%;
     }
-
 }
