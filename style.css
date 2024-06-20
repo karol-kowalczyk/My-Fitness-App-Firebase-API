@@ -1,65 +1,68 @@
-* {
-    margin: 0;
-}
+@media only screen and (device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) {
+    * {
+        margin: 0;
+    }
 
-body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 16px;
-    height: 100vh;
-    gap: 56px;
-}
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 16px;
+        height: 100vh;
+        gap: 56px;
+    }
 
-input {
-    border: 2px solid black;
-    border-radius: 10px;
-}
+    input {
+        border: 2px solid black;
+        border-radius: 10px;
+    }
 
-button {
-    cursor: pointer;
-}
+    button {
+        cursor: pointer;
+    }
 
-/* .body-measurements {} */
+    /* .body-measurements {} */
 
-.measurement-row {
-    display: flex;
-    gap: 16px;
-    justify-content: space-between;
-    margin-top: 8px;
-    margin-bottom: 8px;
-}
+    .measurement-row {
+        display: flex;
+        gap: 16px;
+        justify-content: space-between;
+        margin-top: 8px;
+        margin-bottom: 8px;
+    }
 
-.actual-date-div {
-    display: flex;
-    margin-top: 8px;
-    margin-bottom: 8px;
-}
+    .actual-date-div {
+        display: flex;
+        margin-top: 8px;
+        margin-bottom: 8px;
+    }
 
-#summarySection {
-    display: flex;
-    width: 100%;
-    justify-content: space-around;
-}
+    #summarySection {
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+    }
 
-.health-stats-goal {
-    display: flex;
-    justify-content: flex-end;
-    gap: 6px;
-    margin: 8px 0;
-}
+    .health-stats-goal {
+        display: flex;
+        justify-content: flex-end;
+        gap: 6px;
+        margin: 8px 0;
+    }
 
-.month-div {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-}
+    .month-div {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+    }
 
-#table {
-    display: flex;
-    justify-content: space-between;
-}
+    #table {
+        display: flex;
+        justify-content: space-between;
+    }
 
-#actualMonthStats {
-    width: 100%;
+    #actualMonthStats {
+        width: 100%;
+    }
+
 }
