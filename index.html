@@ -7,7 +7,10 @@
     <title>Głowna strona</title>
 
     <link rel="stylesheet" href="style.css">
+
+    <script src="firebase.js" type="module"></script>
     <script defer src="script.js"></script>
+
 </head>
 
 <body onload="init()">
@@ -26,19 +29,19 @@
                 <div>mmHg</div>
             </div>
             <div class="measurement-row">
-                <div>rozkurczowe ciś.:</div> <input required type="number">
+                <div>rozkurczowe ciś.:</div> <input id="diastolicPressure" required type="number">
                 <div>mmHg</div>
             </div>
             <div class="measurement-row">
-                <div>puls:</div> <input required type="number">
+                <div>puls:</div> <input id="pulse" required type="number">
                 <div>bpm</div>
             </div>
             <div class="measurement-row">
-                <div>waga:</div> <input required type="number">
+                <div>waga:</div> <input id="weight" required type="number">
                 <div>kg</div>
             </div>
         </div>
-        <button onclick="addDataToTable()">Submit</button>
+        <button onclick="addDataToTable(event)">Submit</button>
     </form>
 
     <div id="summarySection">
@@ -86,7 +89,7 @@
         </div>
     </div>
     <div id="actualMonthStats">
-        <h4 class="month-div">Tabela aktualnego miesiaca:</h4>
+        <h4 class="month-div">Tabela aktualnego miesiaca: <div id="actualMonth"></div> </h4>
         <table>
             <thead>
                 <tr>
@@ -98,13 +101,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td id="monthlySystolic"></td>
-                    <td id="monthlyDiastolic"></td>
-                    <td id="monthlyPulse"></td>
-                    <td id="monthlyWeight"></td>
-                    <td id="monthlyDate"></td>
-                </tr>
+                <!-- New rows will be inserted here -->
             </tbody>
         </table>
     </div>
