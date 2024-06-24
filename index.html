@@ -4,19 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Głowna strona aplikacji</title>
+    <title>Głowna strona</title>
 
     <link rel="stylesheet" href="style.css">
-
-    <script src="firebase.js" type="module"></script>
     <script defer src="script.js"></script>
-
 </head>
 
 <body onload="init()">
 
     <div>
-        <h1>Wynikizdrowotne</h1>
+        <h1>Wyniki zdrowotne</h1>
         <div class="actual-date-div">
             <div>aktualna data:</div>
             <div id="actualDate"></div>
@@ -34,7 +31,6 @@
             </div>
             <div class="measurement-row">
                 <div>puls:</div> <input id="pulse" required type="number">
-                <div>puls.:</div> <input required type="number">
                 <div>bpm</div>
             </div>
             <div class="measurement-row">

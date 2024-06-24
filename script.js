@@ -15,7 +15,11 @@ const daysOfWeek = ['Niedziela', 'Poniedziałek', 'Wtorek', 'Środa', 'Czwartek'
 function init() {
     showDate();
     showActualMonth();
-    loadDataFromLocalStorage();
+    loadDataFromLocalStorage().then(() => {
+        console.log('Data loaded from Local Storage.');
+    }).catch(err => {
+        console.error('Error loading data from Local Storage:', err);
+    });
 }
 
 function showDate() {
@@ -35,7 +39,7 @@ function showActualMonth() {
     monthElement.innerHTML = `${monthName} ${year}`;
 }
 
-function addDataToTable(e) {
+async function addDataToTable(e) {
     e.preventDefault();
 
     const table = document.querySelector('#actualMonthStats table tbody');
@@ -54,9 +58,14 @@ function addDataToTable(e) {
     cells[3].innerText = weight.value;
     cells[4].innerText = getFormattedDate();
 
-    saveDataToLocalStorage(cells);
+    try {
+        await saveDataToLocalStorage(cells);
+        resetInputFields();
+    } catch (error) {
+        console.error('Error saving data to Local Storage:', error);
+    }
 
-    resetInputFields();
+    loadDataFromLocalStorage();
 }
 
 function getFormattedDate() {
@@ -64,7 +73,7 @@ function getFormattedDate() {
     return `${String(today.getDate()).padStart(2, '0')}-${String(today.getMonth() + 1).padStart(2, '0')}-${today.getFullYear()}`;
 }
 
-function saveDataToLocalStorage(cells) {
+async function saveDataToLocalStorage(cells) {
     const data = {
         systolicPressure: cells[0].innerText,
         diastolicPressure: cells[1].innerText,
@@ -73,32 +82,45 @@ function saveDataToLocalStorage(cells) {
         date: cells[4].innerText
     };
 
-    const existingData = JSON.parse(localStorage.getItem('healthData')) || [];
+    let existingData = await loadDataFromLocalStorage(); // Load existing data
+
+    // Add new data to existing data array
     existingData.push(data);
+
+    // Save updated data back to Local Storage
     localStorage.setItem('healthData', JSON.stringify(existingData));
+
+    return existingData;
 }
 
-function loadDataFromLocalStorage() {
-    const existingData = JSON.parse(localStorage.getItem('healthData')) || [];
+async function loadDataFromLocalStorage() {
+    return new Promise((resolve, reject) => {
+        try {
+            const existingData = JSON.parse(localStorage.getItem('healthData')) || [];
+            const table = document.querySelector('#actualMonthStats table tbody');
+            table.innerHTML = '';
 
-    const table = document.querySelector('#actualMonthStats table tbody');
-    table.innerHTML = '';
+            existingData.forEach(data => {
+                const newRow = table.insertRow();
+                const cells = [
+                    newRow.insertCell(0),
+                    newRow.insertCell(1),
+                    newRow.insertCell(2),
+                    newRow.insertCell(3),
+                    newRow.insertCell(4)
+                ];
 
-    existingData.forEach(data => {
-        const newRow = table.insertRow();
-        const cells = [
-            newRow.insertCell(0),
-            newRow.insertCell(1),
-            newRow.insertCell(2),
-            newRow.insertCell(3),
-            newRow.insertCell(4)
-        ];
+                cells[0].innerText = data.systolicPressure;
+                cells[1].innerText = data.diastolicPressure;
+                cells[2].innerText = data.pulse;
+                cells[3].innerText = data.weight;
+                cells[4].innerText = data.date;
+            });
 
-        cells[0].innerText = data.systolicPressure;
-        cells[1].innerText = data.diastolicPressure;
-        cells[2].innerText = data.pulse;
-        cells[3].innerText = data.weight;
-        cells[4].innerText = data.date;
+            resolve(existingData);
+        } catch (error) {
+            reject(error);
+        }
     });
 }
 
