@@ -1,6 +1,3 @@
-// Import necessary Firebase modules
-// import { push, ref } from './firebase.js';
-
 let monthElement = document.getElementById('actualMonth');
 let date = document.getElementById('actualDate');
 let systolicPressure = document.getElementById('systolicPressure');
@@ -48,7 +45,6 @@ function addDataToTable(e) {
     let cell4 = newRow.insertCell(3);
     let cell5 = newRow.insertCell(4);
     insertCell(cell1, cell2, cell3, cell4, cell5, formattedDate);
-    // postData(systolicPressure.value, diastolicPressure.value, pulse.value, weight.value, formattedDate);
     resetInputFields();
 }
 
@@ -66,18 +62,3 @@ function resetInputFields() {
     pulse.value = '';
     systolicPressure.value = '';
 }
-
-// async function postData(systolic, diastolic, pulse, weight, date) {
-//     try {
-//         await push(ref(database, 'measurements'), {
-//             systolic: systolic,
-//             diastolic: diastolic,
-//             pulse: pulse,
-//             weight: weight,
-//             date: date
-//         });
-//         console.log('Data pushed to Firebase');
-//     } catch (error) {
-//         console.error('Error pushing data to Firebase: ', error);
-//     }
-// }
