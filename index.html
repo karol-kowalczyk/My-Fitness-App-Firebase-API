@@ -22,7 +22,7 @@
     <form>
         <div class="body-measurements">
             <div class="measurement-row">
-                <div>skurczowe ciś.:</div> <input required type="number">
+                <div>skurczowe ciś.:</div> <input id="systolicPressure" required type="number">
                 <div>mmHg</div>
             </div>
             <div class="measurement-row">
@@ -38,7 +38,7 @@
                 <div>kg</div>
             </div>
         </div>
-        <button>Submit</button>
+        <button onclick="addDataToTable()">Submit</button>
     </form>
 
     <div id="summarySection">

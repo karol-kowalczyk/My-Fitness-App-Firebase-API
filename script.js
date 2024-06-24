@@ -25,3 +25,11 @@ function showActualMonth() {
     const monthName = months[today.getMonth()];
     monthElement.innerText = monthName;
 }
+
+function addDataToTable() {
+    e.preventDefault(); // stops reloading the side
+
+    let systolicPressure = document.getElementById('systolicPressure');
+    let monthlySystolic = document.getElementById('monthlySystolic');
+    monthlySystolic.push(systolicPressure.value);
+}
