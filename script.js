@@ -21,7 +21,101 @@ function init() {
     }).catch(err => {
         console.error('Error loading data from Local Storage:', err);
     });
+    
+    setInterval(checkFirstDayOfMonth, 86400000);
 }
+
+// Funktion zum Überprüfen, ob der erste Tag des Monats erreicht ist
+function checkFirstDayOfMonth() {
+    const today = new Date();
+    if (today.getDate() === 1) {
+        const lastMonth = today.getMonth() === 0 ? 11 : today.getMonth() - 1; // Vormonat berechnen
+        const lastMonthName = months[lastMonth];
+        const lastMonthYear = today.getFullYear();
+        
+        // Berechne Durchschnittswerte für den letzten Monat
+        const averages = calculateAveragesForLastMonth();
+        
+        // Erstelle Tabelle in savedData.html
+        createTableInSavedData(lastMonthName, lastMonthYear, averages);
+    }
+}
+
+// Funktion zur Berechnung der Durchschnittswerte für den letzten Monat
+function calculateAveragesForLastMonth() {
+    const today = new Date();
+    const lastMonth = today.getMonth() === 0 ? 11 : today.getMonth() - 1; // Vormonat berechnen
+    const lastMonthYear = today.getFullYear();
+    
+    let totalSystolic = 0;
+    let totalDiastolic = 0;
+    let totalPulse = 0;
+    let totalWeight = 0;
+    let count = 0;
+    
+    // Iteriere über vorhandene Daten und berechne Durchschnittswerte für den letzten Monat
+    const existingData = JSON.parse(localStorage.getItem('healthData')) || [];
+    existingData.forEach(data => {
+        const dateParts = data.date.split('-');
+        const dataMonth = parseInt(dateParts[1], 10) - 1; // Monat von 0 bis 11
+        const dataYear = parseInt(dateParts[2], 10);
+        
+        if (dataMonth === lastMonth && dataYear === lastMonthYear) {
+            totalSystolic += parseInt(data.systolicPressure);
+            totalDiastolic += parseInt(data.diastolicPressure);
+            totalPulse += parseInt(data.pulse);
+            totalWeight += parseInt(data.weight);
+            count++;
+        }
+    });
+    
+    if (count > 0) {
+        const averageSystolic = totalSystolic / count;
+        const averageDiastolic = totalDiastolic / count;
+        const averagePulse = totalPulse / count;
+        const averageWeight = totalWeight / count;
+        return {
+            averageSystolic,
+            averageDiastolic,
+            averagePulse,
+            averageWeight
+        };
+    } else {
+        return null; // Rückgabe null, wenn keine Daten für den letzten Monat vorhanden sind
+    }
+}
+
+function createTableInSavedData(monthName, year, averages) {
+    const savedData = document.createElement('table');
+    savedData.innerHTML = `
+        <thead>
+            <tr>
+                <th colspan="2">${monthName} ${year}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Ø skurczowe ciś.:</td>
+                <td>${averages.averageSystolic.toFixed(1)} mmHg</td>
+            </tr>
+            <tr>
+                <td>Ø rozkurczowe ciś.:</td>
+                <td>${averages.averageDiastolic.toFixed(1)} mmHg</td>
+            </tr>
+            <tr>
+                <td>Ø puls:</td>
+                <td>${averages.averagePulse.toFixed(1)} bpm</td>
+            </tr>
+            <tr>
+                <td>Ø waga:</td>
+                <td>${averages.averageWeight.toFixed(1)} kg</td>
+            </tr>
+        </tbody>
+    `;
+    
+    document.body.appendChild(savedData); // Füge die Tabelle in den Body der Seite ein
+}
+
 
 function showDate() {
     const today = new Date();

@@ -4,6 +4,10 @@
         margin: 0;
     }
 
+    a {
+        cursor: pointer;
+    }
+
     body {
         display: flex;
         flex-direction: column;
