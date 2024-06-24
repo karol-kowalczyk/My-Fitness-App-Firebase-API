@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Głowna strona</title>
+    <title>Główna strona</title>
 
     <link rel="stylesheet" href="style.css">
     <script defer src="script.js"></script>
@@ -67,27 +67,27 @@
             <h4>Cel Ø ostatnich 30-dni:</h4>
             <div>
                 <div class="health-stats-goal">
-                    <div>120</div>
+                    <div id="goalSystolic"></div>
                     <div>mmHg</div>
                 </div>
                 <div class="health-stats-goal">
-                    <div>80</div>
+                    <div id="goalDiastolic"></div>
                     <div>mmHg</div>
                 </div>
                 <div class="health-stats-goal">
-                    <div>60</div>
+                    <div id="goalPulse"></div>
                     <div>bpm</div>
                 </div>
                 <div class="health-stats-goal">
-                    <div>90</div>
+                    <div id="goalWeight"></div>
                     <div>kg</div>
                 </div>
             </div>
         </div>
     </div>
     <div id="actualMonthStats">
-        <h4 class="month-div">Tabela aktualnego miesiaca: <div id="actualMonth"></div> </h4>
-        <table>
+        <h4 class="month-div">Tabela aktualnego miesiąca: <div id="actualMonth"></div> </h4>
+        <table id="healthTable">
             <thead>
                 <tr>
                     <th>skur.</th>
@@ -95,6 +95,7 @@
                     <th>puls</th>
                     <th>waga</th>
                     <th>data dokł.</th>
+                    <th>x</th> <!-- New column for delete button -->
                 </tr>
             </thead>
             <tbody>
