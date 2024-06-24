@@ -21,14 +21,16 @@ function createTable(monthName, year, averages) {
     const table = document.createElement('table');
     table.classList.add('saved-data-table');
 
-    const headers = ['Skurczowe ciś.', 'Rozkurczowe ciś.', 'Puls', 'Waga'];
-    const data = [
-        averages.averageSystolic.toFixed(1),
-        averages.averageDiastolic.toFixed(1),
-        averages.averagePulse.toFixed(1),
-        averages.averageWeight.toFixed(1)
-    ];
+    // Create month and year header row
+    const monthYearRow = document.createElement('tr');
+    const monthYearCell = document.createElement('th');
+    monthYearCell.setAttribute('colspan', '4'); // Span all columns
+    monthYearCell.textContent = `${monthName} ${year}`;
+    monthYearRow.appendChild(monthYearCell);
+    table.appendChild(monthYearRow);
 
+    // Create headers for data
+    const headers = ['Skurczowe ciś.', 'Rozkurczowe ciś.', 'Puls', 'Waga'];
     const headerRow = document.createElement('tr');
     headers.forEach(headerText => {
         const th = document.createElement('th');
@@ -37,6 +39,13 @@ function createTable(monthName, year, averages) {
     });
     table.appendChild(headerRow);
 
+    // Create data row
+    const data = [
+        averages.averageSystolic.toFixed(1),
+        averages.averageDiastolic.toFixed(1),
+        averages.averagePulse.toFixed(1),
+        averages.averageWeight.toFixed(1)
+    ];
     const dataRow = document.createElement('tr');
     data.forEach(cellText => {
         const td = document.createElement('td');
@@ -48,6 +57,7 @@ function createTable(monthName, year, averages) {
     return table;
 }
 
+
 async function getSavedDataFromLocalStorage() {
     return new Promise((resolve, reject) => {
         try {
@@ -57,4 +67,8 @@ async function getSavedDataFromLocalStorage() {
             reject(error);
         }
     });
+}
+
+function goBack() {
+    window.history.back();
 }

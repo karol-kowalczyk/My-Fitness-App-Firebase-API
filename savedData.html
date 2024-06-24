@@ -7,13 +7,14 @@
 
     <link rel="stylesheet" href="saveData.css">
 
-    <script src="./saveData.js"></script>
+    <script defer src="./saveData.js"></script>
 
 </head>
-<body>
+<body onload="init()">
     <div id="savedDataContainer">
 
     </div>
-    <script src="savedData.js"></script>
+
+    <button onclick="goBack()">go back</button>
 </body>
 </html>
